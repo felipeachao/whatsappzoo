@@ -1,0 +1,112 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "REST API",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/"
+    }
+  ],
+  "paths": {
+    "/status": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/send": {
+      "post": {
+        "description": "Rota para enviar imagem para o número do Usuário",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          },
+          "001": {
+            "description": "number",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/number"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/number"
+                }
+              }
+            }
+          },
+          "002": {
+            "description": "path",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/path"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/path"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "number": {
+                    "example": "any"
+                  },
+                  "path": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Boolean": {
+        "type": "boolean",
+        "example": true,
+        "xml": {
+          "name": "Boolean"
+        }
+      },
+      "number": {
+        "type": "string",
+        "example": "559212345678",
+        "xml": {
+          "name": "number"
+        }
+      },
+      "path": {
+        "type": "string",
+        "example": "image.jpg",
+        "xml": {
+          "name": "path"
+        }
+      }
+    }
+  }
+}

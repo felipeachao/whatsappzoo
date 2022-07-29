@@ -3,7 +3,9 @@ import { create, Whatsapp, Message, SocketState } from "venom-bot"
 
 export type QRCode = {
     base64Qr: string
+    asciiQR: string
     attempts: number
+    urlCode?: string
 }
 
 class Sender {
@@ -28,8 +30,8 @@ class Sender {
     }
 
     private initialize() {
-        const qr = (base64Qr: string, asciiQR:string, attempts: number) => {
-            this.qr = {base64Qr, attempts}
+        const qr = (base64Qr: string, asciiQR:string, attempts: number, urlCode?: string) => {
+            this.qr = {base64Qr, asciiQR, attempts, urlCode}
         }
 
         const status = (statusSession: string) => {
