@@ -17,11 +17,10 @@ app.get('/status', (req: Request, res: Response) => {
 })
 
 app.post('/send', async (req: Request, res: Response) => {
-    const { number, message } = req.body
+    const { number, path } = req.body
     
     try{
-        await sender.sendText(number + '@c.us', (message))
-
+        await sender.sendImage(number + '@c.us', path)
         return res.status(200).json()
     } catch (error) {
         console.error(error)

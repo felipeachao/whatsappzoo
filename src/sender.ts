@@ -23,10 +23,8 @@ class Sender {
         this.initialize()
     }
 
-    async sendText(to: string, body: string) {
-                
-        await this.client.sendText(to, body)
-
+    async sendImage(numero: string, path: string){
+        await this.client.sendImage(numero, path)
     }
 
     private initialize() {
@@ -51,7 +49,7 @@ class Sender {
 
         }
          
-        create('ws-sender-dev',qr)
+        create('Zootech',qr)
             .then((client) => start(client))
             .catch((error) => console.error(error))
     }
